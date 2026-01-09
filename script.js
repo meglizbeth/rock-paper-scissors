@@ -14,4 +14,13 @@ function getComputerChoice() {
     }
 }
 
-
+function getHumanChoice() {
+    let sign = prompt("Do you choose rock, paper, or scissors?");
+    if (sign === "rock") {
+        console.log("rock");
+    } else if (sign === "paper") {
+        console.log("paper");
+    } else if (sign === "scissors") {
+        console.log("scissors");
+    }
+}
