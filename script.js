@@ -1,5 +1,3 @@
-
-
 function getComputerChoice() {  
     let computerChoice = Math.random();
     
@@ -13,8 +11,6 @@ function getComputerChoice() {
         return "scissors";
     }
 };
-
-
 
 function getHumanChoice() {
     let humanChoice = prompt("Do you choose rock, paper, or scissors?");   
@@ -58,7 +54,29 @@ function playRound() {
         }
     };
 
+function determineWinner() {
+    let result = playRound();
+    if (result === "Rock beats scissors. You win!" || 
+        "Paper beats rock. You win!" ||
+        "Scissors beats paper. You win!") {
+            return "humanWin";
+        } else if (result === "Paper beats rock. You lose!" ||
+        "Scissors beats paper. You lose!" ||
+        "Rock beats scissors. You lose!") {
+            return "computerWin"; 
+        } else if (result === "You both played rock. You tie!" ||
+        "You both played paper. You tie!" ||
+        "You both played scissors. You tie!") {
+            return "draw";
+        }
+    };
 
-
-
-
+function updateScore() {
+    let winner = determineWinner();
+    
+    if (winner === "humanWin") {
+        return humanScore++;
+        } else if (winner === "computerWin") {
+            return computerScore++;
+        }
+    };
