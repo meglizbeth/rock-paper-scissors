@@ -1,6 +1,5 @@
-function getComputerChoice() {  
-    let computerChoice = Math.random();
-    
+function getComputerChoice() {   
+    const computerChoice = Math.random();
     if (computerChoice <0.33) {
         return "rock";
     }
@@ -13,44 +12,57 @@ function getComputerChoice() {
 };
 
 function getHumanChoice() {
-    let humanChoice = prompt("Do you choose rock, paper, or scissors?");   
-    
+    const humanChoice = prompt("Do you choose rock, paper, or scissors?");
     if (humanChoice.toLowerCase() === "rock") {
         return "rock";
-        } 
-        else if (humanChoice.toLowerCase() === "paper") {
-            return "paper";
-        } 
-        else if (humanChoice.toLowerCase() === "scissors") {
-            return "scissors";
+    } 
+    else if (humanChoice.toLowerCase() === "paper") {
+        return "paper";
+    } 
+    else if (humanChoice.toLowerCase() === "scissors") {
+        return "scissors";
+    }
+};
+
+let humanScore = 0;
+let computerScore = 0;
+const maxScore = 5;
+
+function endGame() {
+
+    if (humanScore >= maxScore ||
+        computerScore >= maxScore) {
+        console.log("Game over! Your final score is " + humanScore
+            + "and the computer's final score is " + computerScore);
         }
     };
 
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function wait() {
+    2000;
+};
 
 function playRound() {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    
+    console.log("You chose " + humanSelection);
+    console.log("Computer chose " + computerSelection);
     if (humanSelection === computerSelection) {
-        return "draw";
+        console.log("Draw");
     } else if 
         (humanSelection === "rock" && computerSelection === "scissors" ||
         humanSelection === "paper" && computerSelection === "rock" ||
         humanSelection === "scissors" && computerSelection === "paper") {
-        return "humanWin";
+        console.log("You won this round!");
+        humanScore++;
     } else {
-        return "computerWin";
+        console.log("The computer won this round.")
+        computerScore++;
     }
-};    
-
-let humanScore = 0;
-let computerScore = 0;
-let winner = playRound();
-
-function updateScore() {    
-    if (winner === "humanWin") {
-        return humanScore +1;
-        } else if (winner === "computerWin") {
-            return computerScore +1;
-    }
+    console.log("Your score is " + humanScore + ". The computer's score is " + computerScore + ".");
 };
+
+playRound();
+playRound();
+
+
